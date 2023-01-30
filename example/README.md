@@ -1,0 +1,1 @@
+To make a new sorting algorithm, copy this folder, rename it and place your algorithm and the drawLines() function every iteration
