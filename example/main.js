@@ -27,13 +27,16 @@ window.onload = function() {
         }
     }
 
-    /*
-    SORTING ALGORITHM GOES HERE
-    
-    REMEMBER TO CALL drawLines() EVERY ITERATION
-    */
-   
+	function sort(arr)
+	{
+		/*
+		SORTING ALGORITHM GOES HERE
+
+		REMEMBER TO CALL drawLines() EVERY ITERATION
+		*/
+	}
+
     initLines();
     drawLines(sortingArray);
-    var intervalID = setInterval(bubbleSort, 0.1, sortingArray);
+    var intervalID = setInterval(sort, 0.1, sortingArray);
 }
