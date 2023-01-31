@@ -35,7 +35,6 @@ window.onload = function() {
                 arr[i] = arr[i+1];
                 arr[i+1] = temp;
             }
-            //console.log(arr);
             drawLines(arr);
         }
     }
