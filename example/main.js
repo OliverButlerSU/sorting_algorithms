@@ -14,12 +14,17 @@ window.onload = function() {
     }
 
     //draws lines from array arr
-    function drawLines(arr)
+    function drawLines(arr, index)
     {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (var i=0; i<arr.length; i++)
         {
-            ctx.beginPath(); 
+            if(index == i){
+                ctx.strokeStyle = 'red'
+            } else{
+                ctx.strokeStyle = 'black'
+            }
+            ctx.beginPath();
             ctx.moveTo((i+1)*4+0.5, 0);
             ctx.lineTo((i+1)*4+0.5, arr[i]);
             ctx.stroke();
@@ -27,16 +32,21 @@ window.onload = function() {
         }
     }
 
-	function sort(arr)
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+	async function sort(arr)
 	{
 		/*
 		SORTING ALGORITHM GOES HERE
 
 		REMEMBER TO CALL drawLines() EVERY ITERATION
+        USE SLEEP AS WELL
 		*/
 	}
 
     initLines();
-    drawLines(sortingArray);
-    var intervalID = setInterval(sort, 0.1, sortingArray);
+    drawLines(sortingArray, 0);
+    sort(arr)
 }
