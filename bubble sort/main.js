@@ -12,12 +12,17 @@ window.onload = function() {
         }
     }
 
-    function drawLines(arr)
+    function drawLines(arr, index)
     {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (var i=0; i<arr.length; i++)
         {
-            ctx.beginPath(); 
+            if(index == i){
+                ctx.strokeStyle = 'red'
+            } else{
+                ctx.strokeStyle = 'black'
+            }
+            ctx.beginPath();
             ctx.moveTo((i+1)*4+0.5, 0);
             ctx.lineTo((i+1)*4+0.5, arr[i]);
             ctx.stroke();
@@ -25,20 +30,29 @@ window.onload = function() {
         }
     }
 
-    function bubbleSort(arr)
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function bubbleSort(arr)
     {
-        for (var i=0; i<arr.length-1; i++)
-        {
-            if (arr[i]>arr[i+1])
+        count = 0;
+        for(j = 1; j < arr.length; j++){
+            for (var i=0; i<arr.length-1-count; i++)
             {
-                var temp = arr[i];
-                arr[i] = arr[i+1];
-                arr[i+1] = temp;
+                if (arr[i]>arr[i+1])
+                {
+                    var temp = arr[i];
+                    arr[i] = arr[i+1];
+                    arr[i+1] = temp;
+                }
+                drawLines(arr, i);
+                await sleep(1)
             }
-            drawLines(arr);
+            count++
         }
     }
     initLines();
     drawLines(sortingArray);
-    var intervalID = setInterval(bubbleSort, 0.1, sortingArray);
+    bubbleSort(sortingArray)
 }

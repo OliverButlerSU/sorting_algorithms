@@ -12,11 +12,16 @@ window.onload = function() {
         }
     }
 
-    function drawLines(arr)
+    function drawLines(arr, index)
     {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (var i=0; i<arr.length; i++)
         {
+            if(index == i){
+                ctx.strokeStyle = 'red'
+            } else{
+                ctx.strokeStyle = 'black'
+            }
             ctx.beginPath(); 
             ctx.moveTo((i+1)*4+0.5, 0);
             ctx.lineTo((i+1)*4+0.5, arr[i]);
@@ -41,7 +46,7 @@ window.onload = function() {
             var temp = arr[min]
             arr[min] = arr[i]
             arr[i] = temp
-            drawLines(arr);
+            drawLines(arr, i);
             await sleep(10);
         }
     }
